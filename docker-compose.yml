@@ -3,16 +3,10 @@ php:
     ports:
     - "80:80"
     - "443:443"
+    volumes:
+    - ./public_html:/var/www/html
     links:
         - mysql
-    volumes_from:
-        - app
-
-app:
-    image: php:5.6-apache
-    volumes:
-        - ./public_html:/var/www/html
-    command: "true"
 
 mysql:
     image: mysql:latest
