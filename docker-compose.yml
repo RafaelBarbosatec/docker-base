@@ -16,20 +16,14 @@ app:
 
 mysql:
     image: mysql:latest
-    volumes_from:
-        - data
+    volumes:
+        - "./mysql:/var/lib/mysql"
+        - ".:/home/docker"
     environment:
         MYSQL_ROOT_PASSWORD: root
         MYSQL_DATABASE: banco_base
         MYSQL_USER: project
         MYSQL_PASSWORD: project
-
-data:
-    image: mysql:latest
-    volumes:
-        - "./mysql:/var/lib/mysql"
-        - ".:/home/docker"
-    command: "true"
 
 phpmyadmin:
     image: phpmyadmin/phpmyadmin
